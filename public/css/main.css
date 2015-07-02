@@ -1,0 +1,266 @@
+html {
+    position   : relative;
+    min-height : 100%;
+}
+
+footer {
+    position   : fixed;
+    left       : 0;
+    bottom     : 0;
+    width      : 100%;
+    background : rgb(235, 235, 235);
+}
+
+.ui.segment {
+    margin : 0 0;
+}
+
+.recognize-user {
+    position : fixed;
+    top      : 0;
+    left     : 0;
+    width    : 150px;
+    z-index  : 1000;
+    opacity  : 0.5;
+}
+
+.menu.transition {
+    /*transform: rotate(-90deg);*/
+    top : 0;
+}
+
+.menu.transition.visible {
+    top  : -150px;
+    left : 0;
+}
+
+.ui.dropdown .menu > .item {
+    /*transform: rotate(90deg);*/
+}
+
+.desktop-header {
+    display : none;
+}
+
+#preloader {
+    /*position: fixed;*/
+    z-index : 1000;
+
+}
+
+
+button#whisperStop {
+    display: none;
+    height : 55px;
+}
+
+button#submit {
+    width  : 42%;
+    height : 55px;
+}
+
+button#clearmessages {
+    height : 55px;
+}
+
+button#whisper_button {
+    display: none;
+    width: 14%;
+    height : 55px;
+}
+
+.ui.form .fields .field:last-child {
+    width : 100%;
+}
+
+.ui.search.dropdown .menu {
+    /*max-height: 0;*/
+}
+
+#ChatName {
+    width : 100px;
+}
+
+ul.drop {
+    padding       : 0;
+    margin-bottom : -26px;
+}
+
+ul.username {
+    min-width  : 105px;
+    height     : 128px;
+    padding    : 0px;
+    word-break : break-all;
+    overflow   : scroll;
+}
+
+ul.drop .user {
+    /*margin-right: 5%;*/
+}
+
+ul.drop li {
+    display      : inline-table;
+    margin-right : 5%;
+    margin-left  : 5%;
+}
+
+ul.drop li .whoisonline, ul.drop li .whisperToLi {
+    list-style : none;
+    display    : block;
+    margin-top : 5%;
+    color      : #808080;
+}
+
+.ui.form textarea, .ui.textarea {
+    margin              : 0;
+    width               : 55%;
+    -webkit-appearance  : none;
+    tap-highlight-color : rgba(255, 255, 255, 0);
+    /* padding: .78571em 1em; */
+    background          : #fff;
+    border              : 1px solid rgba(39, 41, 43, .15);
+    outline             : 0;
+    color               : rgba(0, 0, 0, .8);
+    border-radius       : .2857rem;
+    box-shadow          : 0 0 0 0 transparent inset;
+    -webkit-transition  : background-color .2s ease, color .2s ease, box-shadow .2s ease, border-color .2s ease;
+    transition          : background-color .2s ease, color .2s ease, box-shadow .2s ease, border-color .2s ease;
+    font-size           : 1em;
+    height              : 0em;
+    min-height          : 4em;
+    max-height          : 24em;
+    line-height         : 1.2857;
+    resize              : vertical;
+}
+
+/*.wrap {*/
+/*width  : 100%;*/
+/*margin : 2% auto;*/
+/*}*/
+
+.ui.comments.messages {
+    overflow : scroll;
+}
+
+.ui.tertiary.segment {
+    width  : 100%;
+    height : 100%;
+}
+
+.ui.comments .comment {
+    margin : .5em 0 0.7em;
+}
+
+.message-segment-footer {
+    height : 170px;
+    width  : 100%;
+    /*border: 1px solid;*/
+}
+
+.row {
+    margin : 0 auto;
+    width  : 100%;
+    /*min-height : 500px;*/
+}
+
+.Sim {
+    border-radius : 5px;
+    min-height    : 70px;
+    padding       : 3%;
+    background    : white;
+    color         : #1b1b1b;
+    min-width     : 100px;
+}
+
+.avatarsm {
+    width : 20px;
+    float : left;
+}
+
+.avatarlarge {
+    width : 50px;
+    /*float : left;*/
+}
+
+textarea[placeholder] {
+    /*font-size: 1.1em;*/
+}
+
+.whisper {
+    /*margin-left : 5%;*/
+    /*margin-top  : 2%;*/
+    /*background  : #808080;*/
+    /*color       : #FFF;*/
+    /*box-shadow  : inset 0 0 5px rgba(000, 000, 000, 0.5);*/
+
+    min-width  : 105px;
+    height     : 128px;
+    padding    : 0;
+    word-break : break-all;
+    overflow   : scroll;
+    cursor     : pointer;
+
+}
+
+#whisperTo{
+    display: none;
+}
+
+.whisperTo {
+    width : 100%;
+}
+
+.whisperTo:hover {
+    background : lightblue;
+}
+
+
+
+/*.whisperNow, .whisperStop {*/
+    /*width : 100%;*/
+/*}*/
+
+@media only screen and ( min-width : 710px ) {
+
+    button#whisper_button {
+        width: 23%;
+        height : 55px;
+    }
+
+
+
+    .ui.blue.button {
+        width : 89%;
+    }
+
+    .desktop-header {
+        display : block;
+    }
+
+    .ui.tertiary.segment {
+        width         : 60%;
+        height        : 100%;
+        margin        : 0 auto;
+        border-radius : 10px;
+    }
+
+    footer {
+        width       : 60%;
+        margin-left : 20%;
+    }
+
+    #preloader {
+        z-index : 1000;
+
+    }
+
+    /*.whisper {*/
+    /*margin-left : 5%;*/
+    /*margin-top  : 2%;*/
+    /*background  : #cdced3;*/
+    /*color       : #FFF;*/
+    /*padding     : 5%;*/
+    /*box-shadow  : inset 0 0 5px rgba(000, 000, 000, 0.5);*/
+    /*}*/
+
+}
