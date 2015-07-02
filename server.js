@@ -3,12 +3,14 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-//var users = [];
 var users = {};
 var WhisperChek = false;
 
+var clients = {};
+var clientsID = {};
+
 //check if is set session.storage
-var storage=[];
+var storage = [];
 
 app.use(express.static(__dirname + '/public'));
 
@@ -27,16 +29,14 @@ mongo.connect('mongodb://127.0.0.1/chat', function (err, db) {
     //socket connection
     io.on('connection', function (socket) {
 
-
-        console.log('Someone connected!');
+        socket.Id = socket.client.id;
+        clients[socket.Id] = socket;
+        console.log('Someone connected! - ' + clients[socket.Id].id);
 
         var collection = db.collection('messages');
 
 
-
-
 //Output all messages
-//
         collection.find().limit(50).sort({date: 1}).toArray(function (err, res) {
             if (err) {
                 sendStatus('Error fetching messages.');
@@ -56,7 +56,6 @@ mongo.connect('mongodb://127.0.0.1/chat', function (err, db) {
                         avatar: res[x].avatar
                     };
 
-
                     //console.log(output);
                     socket.emit('output-all', output, storage_data);
 
@@ -67,7 +66,6 @@ mongo.connect('mongodb://127.0.0.1/chat', function (err, db) {
         });
 
 // NICKNAME
-
         socket.on('nickname', function (data) {
             socket.Username = data;
             users[socket.Username] = socket;
@@ -75,22 +73,24 @@ mongo.connect('mongodb://127.0.0.1/chat', function (err, db) {
         });
 
 //  WHISPER
-        socket.on("whisper", function (data, msg, whisperStatus) {
+        socket.on("whisper", function (data) {
 
-            if (!whisperStatus) {
+            if (!data.whisperStatus) {
                 console.log("stopped whispering with: " + data);
                 delete users[socket.whisper];
-            } else if (data.length && whisperStatus) {
-                socket.whisper = data;
-//                users[socket.whisper] = socket;
-                console.log("whisper" + users[socket.whisper] + data);
-                WhisperChek = true;
 
-                socket.emit('output', [data], [msg], WhisperChek);
+            } else if (data.whisperToName.length && data.whisperStatus) {
 
-                users[socket.whisper].emit('output', [data], [msg], WhisperChek);
+                socket.whisper = data.whisperToName;
+
+                clientsID['id'] = clients[socket.Id].id;
+
+                socket.emit('output', data);
+
+                users[socket.whisper].emit('output', data);
 
             }
+
         });
 
 // Functions
@@ -120,11 +120,7 @@ mongo.connect('mongodb://127.0.0.1/chat', function (err, db) {
             else {
 
                 collection.insert({date: date, name: name, message: message, avatar: avatar}, function () {
-                    console.log(data.name + ' inserted a message into db');
-
-//          //Emit latest messages to all Clients
-//          io.sockets.broadcast.emit('output', [data]);
-
+                    console.log(data.Name + ' inserted a message into db');
 
                     io.sockets.emit('output', data, WhisperChek);
 
@@ -141,8 +137,15 @@ mongo.connect('mongodb://127.0.0.1/chat', function (err, db) {
 
 //disconnect
         socket.on('disconnect', function (data) {
+            delete clients[socket.Id];
+
+
             if (!socket.Username)return;
             delete users[socket.Username];
+
+            if (!socket.whisper)return;
+            delete users[socket.whisper];
+
             updateNicknames();
         });
 
@@ -151,6 +154,6 @@ mongo.connect('mongodb://127.0.0.1/chat', function (err, db) {
 });
 
 
-http.listen(3001, function () {
-    console.log('listening on *:3001');
+http.listen(3000, function () {
+    console.log('listening on *:3000');
 });

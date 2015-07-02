@@ -25,17 +25,11 @@ Open your favourite browser at localhost:3001
   
 #Video
   
-desktop  
- 
- <img src="video/node_chat_desktop.gif" alt="node_chat_desktop.gif"/>  
- 
-mobile  
- 
- <img src="video/node_chat_iphone.gif" alt="node_chat_iphone.gif"/>
+
 
  
 
-
+<a href="LICENSE.md">MIT</a>
 
 
      
