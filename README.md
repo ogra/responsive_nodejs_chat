@@ -3,6 +3,8 @@
 
 <h3>nodejs chat whisper </h3>
 
+it's not for production but nice to play with!  
+
 2015 - NodeJs Mongodb Socket.io Realtime chat  
 
 #npm  
