@@ -1,6 +1,6 @@
  {
   "name": "responsive_nodejs_chat",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "2015 - NodeJs Mongodb Socket.io Realtime chat add whisper func",
   "keywords": [
     "node ,nodejs,chat,mongo,mongodb,real",
