@@ -27,7 +27,7 @@ Open your favourite browser at localhost:3001
   
 #Video
 
- watch  <a hre="https://youtu.be/a6NMUJ05dwQ">YOUTUBE</a>
+ watch - <a href="https://youtu.be/a6NMUJ05dwQ">YOUTUBE</a>
 
  
 <a href="LICENSE.md">MIT</a>
