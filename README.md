@@ -33,9 +33,9 @@ Open your favourite browser at localhost:3000
   
 #Demo
 
-  <a href="http://nodejschat-simgoat.rhcloud.com/">nodejschat</a>
+  <a href="http://nodejschat-simgoat.rhcloud.com/">Go Here</a>
 
- 
+#License
 <a href="LICENSE.md">MIT</a>
 
 
