@@ -1,6 +1,6 @@
- {
+{
   "name": "responsive_nodejs_chat",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "2015 - NodeJs Mongodb Socket.io Realtime chat add whisper func",
   "keywords": [
     "node ,nodejs,chat,mongo,mongodb,real",
@@ -20,14 +20,5 @@
   },
   "scripts": {
     "start": "node server.js"
-  },
-  "readme": "#Realtime Chat with Node.js\n--------------------------\n\n2015 - NodeJs Mongodb Socket.io Realtime chat  \n\n#Setup \n \n \n Install mongodb <a href=\"https://www.mongodb.org/\">mongodb download</a>  \n Read <a href=\"http://docs.mongodb.org/manual/installation/\">docs</a>  \n \n Terminal commands mongo:\n \n    $ mongo  \n     > use chat  \n     \n    \n Terminal commands nodejs:\n        \n     $ node server.js  \n     \nOpen your favourite browser at localhost:3001    \n \n \n     \n     ",
-  "readmeFilename": "README.md",
-  "bugs": {
-    "url": "https://github.com/SimHub/responsive_nodejs_chat/issues"
-  },
-  "homepage": "https://github.com/SimHub/responsive_nodejs_chat#readme",
-  "_id": "responsive_nodejs_chat@0.0.1",
-  "_shasum": "7bc123d17d3ced7e881f773ed3c8869574423a95",
-  "_from": "responsive_nodejs_chat@*"
+  }
 }

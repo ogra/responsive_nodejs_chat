@@ -15,6 +15,10 @@ it's not for production but nice to play with!
  Install mongodb <a href="https://www.mongodb.org/">mongodb download</a>  
  Read <a href="http://docs.mongodb.org/manual/installation/">docs</a>  
  
+ Start mongodb:  
+ 
+    $ mongod  
+     
  Terminal commands mongo:
  
     $ mongo  
@@ -25,11 +29,11 @@ it's not for production but nice to play with!
         
      $ node server.js  
      
-Open your favourite browser at localhost:3001  
+Open your favourite browser at localhost:3000 
   
-#Video
+#Demo
 
- watch - <a href="https://youtu.be/a6NMUJ05dwQ">YOUTUBE</a>
+  <a href="http://nodejschat-simgoat.rhcloud.com/">nodejschat</a>
 
  
 <a href="LICENSE.md">MIT</a>
