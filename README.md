@@ -7,6 +7,10 @@ it's not for production but nice to play with!
 
 2015 - NodeJs Mongodb Socket.io Realtime chat  
 
+#demo
+
+  <a href="http://nodejschat-simgoat.rhcloud.com/">Go Here</a>  
+
 #install  
     clone project or download zip file
 
@@ -34,10 +38,6 @@ it's not for production but nice to play with!
      
 Open your favourite browser at localhost:3000 
   
-#demo
-
-  <a href="http://nodejschat-simgoat.rhcloud.com/">Go Here</a>
-
 #license
 <a href="LICENSE.md">MIT</a>
 
