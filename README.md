@@ -7,10 +7,13 @@ it's not for production but nice to play with!
 
 2015 - NodeJs Mongodb Socket.io Realtime chat  
 
+#install  
+    clone project or download zip file
+
 #npm  
     npm i responsive_nodejs_chat
 
-#Setup 
+#setup 
  
  Install mongodb <a href="https://www.mongodb.org/">mongodb download</a>  
  Read <a href="http://docs.mongodb.org/manual/installation/">docs</a>  
@@ -31,11 +34,11 @@ it's not for production but nice to play with!
      
 Open your favourite browser at localhost:3000 
   
-#Demo
+#demo
 
   <a href="http://nodejschat-simgoat.rhcloud.com/">Go Here</a>
 
-#License
+#license
 <a href="LICENSE.md">MIT</a>
 
 
