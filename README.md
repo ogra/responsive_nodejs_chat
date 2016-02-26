@@ -3,7 +3,6 @@
 
 NodeJs Mongodb Socket.io Realtime chat  
 
- See demo <a href="http://nodejschat-simgoat.rhcloud.com/"><u>here</u></a> using this as a skeleton
 #npm  
     npm i responsive_nodejs_chat
 
@@ -23,8 +22,11 @@ NodeJs Mongodb Socket.io Realtime chat
      
 Open your favourite browser at localhost:3000 
   
-#Demo
-  
+#Demo  
+
+online
+   See demo <a href="http://nodejschat-simgoat.rhcloud.com/"><u>here</u></a> using this as a skeleton  
+
 desktop  
  
  <img src="video/node_chat_desktop.gif" alt="node_chat_desktop.gif"/>  
