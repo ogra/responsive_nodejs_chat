@@ -16,8 +16,11 @@
 
     <title>NodeJs Real time chat</title>
 
+<<<<<<< HEAD
     <!--FAVICON-->
     <link rel="icon" type="image/png" href="favicon.png">
+=======
+>>>>>>> 53875ef27cb1ae09f6f0496b5371d63e1a89f68f
 
     <!--SERVER-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.css">
@@ -30,8 +33,10 @@
 
 </head>
 <body>
+
 <!-- recognize user-->
 <div class="recognize-user"></div>
+
 
 <!--MESSAGE OUTPUT-->
 <div class='ui tertiary compact segment chatty'>
@@ -98,7 +103,7 @@
                         </li>
                         <!--WHOISONLINE-->
                         <li>
-                            <div style="color: darkred"> online</div>
+                            <div style="color: darkred">online</div>
                             <div class="ui  dropdown">
                                 <div class="text"></div>
 
@@ -111,6 +116,18 @@
                             </div>
                         </li>
 
+<<<<<<< HEAD
+=======
+                        <!--WHISPERTO-->
+                        <li>
+                            <button id="whisper_button_first_view" type="button" class="ui icon basic  button " ><i
+                                class="spy icon"></i>
+                            </button>
+                                    <select name="whisper" id="whisperTo" class="whisper" >
+                                        <option value=""> whisper</option>
+                                    </select>
+                        </li>
+>>>>>>> 53875ef27cb1ae09f6f0496b5371d63e1a89f68f
 
                         <!--Reset session storage-->
                         <li>
@@ -130,9 +147,13 @@
                         <button id="submit" type="submit" class="ui blue icon button " >
                             <i class="comment icon"></i>
                         </button>
-                        <button id="clearmessages" type="button" class="ui icon basic  button " ><i
-                            class="ban icon"></i>
+                        <button id="whisper_button" type="submit" class="ui icon blue  button " ><i
+                            class="spy icon"></i>
                         </button>
+                        <button id="whisperStop" type="submit" class="ui basic icon button" >
+                            <i class="ban icon"></i>
+                        </button>
+
                     </div>
                 </form>
             </div>
@@ -145,7 +166,8 @@
     </form>
 
     <div style="text-align: center">
-        <small style="font-size: 0.6em">&copy; Simon Lackmann 2015 - NodeJs Mongodb Socket.io Realtime chat
+        <small style="font-size: 0.6em">&copy; Simon Lackmann 2015 - NodeJs Mongodb Socket.io Realtime
+            chat
         </small>
     </div>
 
@@ -153,6 +175,8 @@
 
 <!--connect to local NodeJs server for socket.io -->
 <script src="socket.io/socket.io.js"></script>
+
+
 
 <!--SERVER-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -164,7 +188,6 @@
 <script>
 
     $(function () {
-
         $('.dropdown').dropdown();
 
 

@@ -1,42 +1,37 @@
 $(function () {
 
 
-    $('#clearmessages').on('click', function () {
-        $('.messages').empty();
-    });
 //-----------------------------------------------
-    $('#myModal').modal('toggle');
 
     //========================//
     //   SESSION STORAGE      //
     //======================//
     var storage = $.localStorage;
 
-    //var name = $('.chat input[name="name"]'),
-    //var date = new Date();
-    var d = new Date();
+    //var d = new Date();
 
-
-
-    var D = d.toUTCString().replace('GMT', '');
+    //var D = d.toUTCString().replace('GMT', '');
 
     var name,
         recognizeUser = $('.recognize-user'),
         storageCheck = false,
-        NicknameButton = $('#chatnamesavebutton'),
+        //NicknameButton = $('#chatnamesavebutton'),
         html,
         htmlNickname,
         whisper,
+        whisper_button = $('#whisper_button'),
+        whisperToName,
         whisperTo = $('.whisper'),
-        whisperStatus,
+        whisperStatus = false,
         whisperMsg = $('#whisperMsg'),
         textarea = $('.msg'),
         status = $('.chat-status span'),
         statusbox = $('.chat-status').hide(),
         statusOld = status.text(),
         $avatar = $('.text'),
-        nickname_bool = false,
+        //nickname_bool = false,
         messagesDiv = $('.messages');
+
 
     messagesDiv.css({display: 'block'});
 
@@ -104,16 +99,6 @@ $(function () {
             }, 5000);
         }
 
-        //==== receive socket nickname==//
-        socket.on('nickname', function (data) {
-            console.log('online: ' + data);
-
-            nick_name(data);
-
-            //console.log(htmlNickname + data);
-
-        });
-
         //==================//
         //  ALL OUTPUTS    //
         //================//
@@ -122,6 +107,8 @@ $(function () {
             //check if storage_data ==true//
             storageData(storage_data);
 
+//                    $('#chatnamesavebutton').css({"display": "block"});
+//                for (var i = 0; i < data.length; i++) {
             html =
                 "<div class='comment animated bounceInDown'>" +
                 "<p class='avatar'>" +
@@ -149,6 +136,110 @@ $(function () {
             $('#preloader').hide();
 
 
+        });
+
+
+        //===============================//
+        //    RECEIVE SOCKET NICKNAME   //
+        //==============================//
+        socket.on('nickname', function (data) {
+
+            nick_name(data);
+
+
+            $('#whisper_button_first_view').on('click', function () {
+                $(this).hide('fast');
+                $('#whisperTo').show('slow');
+            });
+
+            $('#whisperTo').on({
+                mouseup: function (e) {
+                    e.preventDefault();
+                    //console.log('whisperName');
+                    $('#submit').hide('fast');
+                    whisper_button.show('slow');
+                    $('#whisperStop').show('slow');
+
+                    $(this).css({'background': '#464545', 'color': 'white'});
+                    $('.ui.form textarea, .ui.textarea').css({'background': '#464545', 'color': 'white'});
+
+                    //whisperToName = $(this).find($('.whisperName').text());
+                    whisperToName = $(this).val();
+
+                    //console.log('onUP: '+data+' whisperToName - '+whisperToName);
+
+                }, change: function (e) {
+                    e.preventDefault();
+                    whisperToName = $(this).val();
+                    //console.log('onCHANGE: '+data+' whisperToName - '+whisperToName);
+
+                }
+            });
+
+        });
+             //end socke.onNickname
+
+        //==================//
+        // Stop Whispering    //
+        //================//
+
+        $('#whisperStop').on('click', function (e) {
+            e.preventDefault();
+            console.log('whisperStop');
+            $(this).hide('fast');
+            $('#whisper_button').hide('fast');
+            $('#submit').show('slow');
+
+            $('#whisperTo').hide('fast');
+            $('#whisper_button_first_view').show('slow');
+            //$('#whisperTo').css({'background': 'white', 'color': 'rgba(0, 0, 0, .8)'});
+
+            $('.ui.form textarea, .ui.textarea').css({'background': 'white', 'color': 'rgba(0, 0, 0, .8)'});
+
+            whisperStatus = false;
+            socket.emit('whisper',
+
+                {
+
+                    whisperToName: whisperToName,
+                    msg: textarea.val(),
+                    //date: date,
+                    whisperStatus: whisperStatus
+
+                });
+
+        });
+
+        $('#whisper_button').on('click', function (e) {
+            e.preventDefault();
+            console.log('whisper');
+            whisperStatus = true;
+            //socket.emit('whisper', whisperTo.val(), whisperMsg.val(), whisperStatus);
+            var whisperFromName = storage.get('name');
+
+
+            var d = new Date();
+            var n = d.toLocaleDateString();
+            var t = d.toLocaleTimeString();
+
+            var date = n + ' ' + t;
+
+            socket.emit('whisper',
+
+                {
+
+                    whisperToName: whisperToName,
+                    whisperFromName: whisperFromName,
+                    msg: textarea.val(),
+                    date: date,
+                    whisperStatus: whisperStatus,
+                    avatar: $avatar.html()
+
+
+                });
+
+            textarea.val('');
+
 
         });
 
@@ -156,42 +247,47 @@ $(function () {
         //=======================//
         // OUTPUT AFTER SUBMIT  //
         //=====================//
-        socket.on('output', function (data, msg, WhisperCheck) {
+        socket.on('output', function (data) {
+
+            console.log('wcheck: ' + data.whisperStatus);
+
+            if (data.whisperStatus) {
 
 
-            if (WhisperCheck) {
+                console.log(data.date + ' - ' + data.whisperToName);
 
                 html =
-//                                "<div><p class='bg-primary Sim'><img class='img-circle avatarm' src='avatar/user3.png' alt='avater'><span class='bubblewhisper' style='color: #ffffff'> <em>whisperTo - " + data[i] + "</em>: " + msg[i] + "</span></p></div>";
-                    "<div class='comment'>" +
-                    "<a class='avatar'>" +
-                        //dataAv(data.avatar) +
-                    $avatar +
 
-                    "</a>" +
+
+                    "<div class='comment animated bounceInDown'>" +
+                    "<p class='avatar'>" +
+                    dataAv(data.avatar) +
+                    "</p>" +
                     "<div class='content'>" +
-                    "<a class='author'>Matt</a>" +
+                    "<a class='author'>" + data.whisperFromName + "</a>" +
                     "<div class='metadata'>" +
-                    "<span class='date'>" + data.date + "</span>" +
+                    "<span class='date'> " + data.date + "</span>" +
                     "</div>" +
-                    "<div class='text'>" +
-                    "<em>whisperTo - "
+                    "<br/>" +
+                    "<p class='author' style='font-weight: 300'> <i class='spy icon'> </i> " + data.whisperToName + "</p>" +
 
-                    + data.name + "</em>: " + data.message +
+                    "<div class='text' style='color: #a6373c'>" +
+                        //"<i class='spy icon'> </i> "
+                    "<i class='comment icon'></i>  "
 
-                    "</div>" +
-                    "<div class='actions'>" +
-                    "</div>" +
-                    "</div>" +
-                    "</div>"
+                    + data.msg +
 
+                "</div>" +
+                "<div class='actions'>" +
+                "</div>" +
+                "</div>" +
+                "</div>";
 
                 messagesDiv.prepend(html);
 
             }
 
-            if (!WhisperCheck) {
-//                    $('#chatnamesavebutton').css({"display": "block"});
+            if (!data.whisperStatus) {
 
                 html =
                     "<div class='comment animated bounceInDown'>" +
@@ -205,7 +301,6 @@ $(function () {
                     "</div>" +
                     "<div class='text'><i class='comment icon'></i>  "
 
-//                        + data.message +
                 + dataM(data.message) +
 
                 "</div>" +
@@ -214,14 +309,22 @@ $(function () {
                 "</div>" +
                 "</div>";
                 messagesDiv.prepend(html);
+
                 $('#preloader').hide();
 
             }
         });
 
+
         //===============//
         // HELPER FUNC. //
         //=============//
+
+        function Whisper(dataW) {
+            for (var wsp = 0; wsp < dataW.length; wsp += 1) {
+                return dataW[wsp];
+            }
+        }
 
         function dataM(dataM) {
             if (dataM === undefined) {
@@ -243,7 +346,7 @@ $(function () {
 
         function dataAv(dataAv) {
             if (dataAv === undefined) {
-                dataAv = 'noFace';
+                dataAv = '';
                 return dataAv;
             } else {
                 return dataAv;
@@ -252,11 +355,12 @@ $(function () {
 
         function nick_name(data) {
             htmlNickname = '';
+            whisper = '';
 
             for (var i = 0; i < data.length; i++) {
 
                 htmlNickname += "<li class='whoisonline'><i class='user icon' ></i> " + data[i] + "</li>";
-                //whisper += "<option>" + data[i] + "</option>";
+                whisper += "<option value='" + data[i] + "'><i class='user icon' ></i>" + data[i] + "</option>";
 
             }
 
@@ -290,20 +394,17 @@ $(function () {
 
             var name = $('.chat');
 
+
             //====== storageCheck======//
             if (storageCheck === true) {
 
                 name = storage.get('name');
-                //$avatar = storage.get('avatar');
-                //$('#empty-storage').show();
 
 
             } else {
                 name = name.val();
-                //$avatar = $avatar.html();
 
                 name = storage.set('name', name);
-                //storage.set('avatar', $avatar);
 
                 $('#empty-storage').show();
 
@@ -312,15 +413,12 @@ $(function () {
 
 
             socket.emit('nickname', name);
-//                    name.val('');
-
-            //console.log('avatar: ' + $avatar.html());
 
             //======Listen for status========//
             socket.on('status', function (data) {
 
                 if (typeof data !== 'object') {
-                    //data will be a string incase of error status
+                    //data will be a string in case of error status
                     statusbox.show().removeClass("alert-success");
                     statusbox.show().addClass("alert-danger");
                     setStatus(data);
@@ -328,26 +426,24 @@ $(function () {
                 if (data.clear === true) {
 
                     $('li.user').hide('slow');
-                    //$('li.li-avatar').hide();
 
                     textarea.val('');//clear textarea
                 }
 
             });
+            //
 
             var d = new Date();
             var n = d.toLocaleDateString();
-            var t= d.toLocaleTimeString();
+            var t = d.toLocaleTimeString();
 
-            var date = n+' '+t;
+            var date = n + ' ' + t;
 
             socket.emit('userinput',
                 {
 
                     name: name,
                     message: textarea.val(),
-                    //date: date.toUTCString().replace('GMT', ''),
-                    //date:"Mon, 22 Jun 2015 17:24:00 ",
                     date: date,
                     avatar: $avatar.html()
 
@@ -372,26 +468,6 @@ $(function () {
             $(this).hide();
         });
 
-
-        ////==== receive socket nickname==//
-        //socket.on('nickname', function (data, nickname) {
-        //    nickname_bool = nickname;
-        //
-        //
-        //    nick_name(data);
-        //
-        //});
-
-        //======Whisper=====//
-        $('.whisperStop').on('click', function () {
-            whisperStatus = false;
-            socket.emit('whisper', whisperTo.val(), whisperStatus);
-        });
-
-        $('.whisperNow').on('click', function () {
-            whisperStatus = true;
-            socket.emit('whisper', whisperTo.val(), whisperMsg.val(), whisperStatus);
-        });
 
 
     } //end socket
