@@ -4,7 +4,10 @@
 NodeJs Mongodb Socket.io Realtime chat  
 
 #npm  
-    npm i responsive_nodejs_chat
+    $ npm i simple-nodejs-chat 
+    
+    $ cd/[path to]/simple-nodejs-chat/
+      npm install  
 
 #Setup 
  
