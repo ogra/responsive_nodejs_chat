@@ -1,6 +1,6 @@
 {
   "name": "simple-nodejs-chat",
-  "version": "1.0.0",
+  "version": "1.0.0",npm
   "description": "nodejs chat app",
   "keywords": [
     "chat",
@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "express": "~3.4.4",
-    "socket.io": "^1.4.5"
+    "socket.io": "^1.4.5",
+    "mongodb": "~2.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],
