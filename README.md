@@ -24,8 +24,9 @@ Open your favourite browser at localhost:3000
   
 #Demo  
 
-online
-   See demo <a href="http://nodejschat-simgoat.rhcloud.com/"><u>here</u></a> using this as a skeleton  
+online  
+   
+   See demo <a href="http://nodejschat-simgoat.rhcloud.com/"><em><u>HERE</u>/em></a> using this as a skeleton  
 
 desktop  
  
