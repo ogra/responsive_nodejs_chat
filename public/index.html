@@ -16,6 +16,9 @@
 
     <title>NodeJs Real time chat</title>
 
+    <!--FAVICON-->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <!--SERVER-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.css">
 
@@ -49,7 +52,7 @@
 </div>
 <!--end ui compact segment-->
 
-<!--FOOTER + FORM INPUT-->
+<!--FOOTER / FORM INPUT-->
 <footer>
 
     <form class="ui form">
@@ -107,6 +110,8 @@
                                 </div>
                             </div>
                         </li>
+
+
                         <!--Reset session storage-->
                         <li>
                             <button class="ui icon basic button" id="empty-storage"><i class="remove user icon"></i>
@@ -161,6 +166,7 @@
     $(function () {
 
         $('.dropdown').dropdown();
+
 
     });//document ready end
 

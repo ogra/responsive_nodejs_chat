@@ -1,17 +1,27 @@
 {
-  "name": "responsive_nodejs_chat",
-  "version": "0.0.1",
-  "description":"2015 - NodeJs Mongodb Socket.io Realtime chat",
-  "keywords":"node ,nodejs,chat,mongo,mongodb,real, time,realtime chat,chat,demo",
-  "author":"lackmann.simon@gmail.com",
-
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/SimHub/responsive_nodejs_chat"
+  "name": "simple-nodejs-chat",
+  "version": "1.0.0",
+  "description": "nodejs chat app",
+  "keywords": [
+    "chat",
+    "Node.js",
+    "application",
+    "npm"
+  ],
+  "author": {
+    "name": "SimHub",
+    "email": "simhub.dev@gmail.com"
   },
-  "dependencies":{
-    "mongodb":"latest",
-    "express":"latest",
-    "socket.io":"latest"
-  }
+  "engines": {
+    "node": ">= 5.5.0",
+    "npm": ">= 3.3.12"
+  },
+  "dependencies": {
+    "express": "~3.4.4",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "main": "server.js"
 }
