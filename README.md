@@ -3,39 +3,39 @@
 
 NodeJs Mongodb Socket.io Realtime chat  
 
-#npm  
-    $ npm i simple-nodejs-chat 
-    
-    $ cd/[path to]/simple-nodejs-chat/
-      npm install  
-
 #Setup 
+ Install <a href="https://nodejs.org/en/" alt="nodejs">Node js</a>  
+  Read <a href="https://nodejs.org/en/docs/ ">docs</a>  
  
- Install mongodb <a href="https://www.mongodb.org/">mongodb download</a>  
+ 
+ Install mongodb <a href="https://www.mongodb.org/">mongodb</a>  
  Read <a href="http://docs.mongodb.org/manual/installation/">docs</a>  
  
   Start mongod:
  
     $ mongod    
-     
+       
     
- Start app:
-        
+ Start app:  
+
+     $ cd [path to]/responsive_nodejs_chat/
+     
+     $ npm install
+       
      $ node server.js  
      
-Open your favourite browser at localhost:3000 
+_Open your favourite browser at localhost:3000_ 
+ 
   
-#Demo  
-
-online  
+#Demo  - online  
    
-   See demo <a href="http://nodejschat-simgoat.rhcloud.com/"><em><u>HERE</u></em></a> using this as a skeleton  
+Goto Room_Example Demo <a href="http://simonsays-simgoat.rhcloud.com/"><em><u>HERE</u></em></a>   
 
-desktop  
+Desktop  
  
  <img src="video/node_chat_desktop.gif" alt="node_chat_desktop.gif"/>  
  
-mobile  
+Web App 
  
  <img src="video/node_chat_iphone.gif" alt="node_chat_iphone.gif"/>
 
