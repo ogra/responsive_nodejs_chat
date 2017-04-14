@@ -35,6 +35,35 @@ $(function () {
 
     messagesDiv.css({display: 'block'});
 
+    //===============//
+    // CHAT TEMPLATE //
+    //=============//
+    let chatTemplate = (avatar, name, date, message) => {
+        return `
+          <div class="ui feed animated bounceInDown">
+            <div class="ui horizontal divider"><i class="comments outline icon"></i></div>
+            <div class="event">
+            <div class="label">
+            ${avatar}
+            </div>
+            <div class="content">
+            <div class="summary">
+            <a>${name}</a>
+            <div class="date">
+            ${date}
+            </div>
+            </div>
+            <div class="extra text">
+                 | <i class='comment icon'></i> ${message}
+            </div>
+            <div class="meta">
+            <a class="like"></a>
+            </div>
+            </div>
+            </div>
+           </div>      
+      `;
+    };
 
     try {
         var socket = io.connect();
@@ -106,33 +135,7 @@ $(function () {
 
             //check if storage_data ==true//
             storageData(storage_data);
-
-//                    $('#chatnamesavebutton').css({"display": "block"});
-//                for (var i = 0; i < data.length; i++) {
-            html =
-                "<div class='comment animated bounceInDown'>" +
-                "<p class='avatar'>" +
-                dataAv(data.avatar) +
-                " </p>" +
-                "<div class='content'>" +
-                "<a class='author'>" + dataN(data.name) + "</a>" +
-                "<div class='metadata'>" +
-                "<span class='date'> " + data.date + "</span>" +
-                "</div>" +
-                "<div class='text'><i class='comment icon'></i>  "
-
-//                        + data.message +
-            + dataM(data.message) +
-
-            "</div>" +
-            "<div class='actions'>" +
-            "</div>" +
-            "</div>" +
-            "</div>";
-            messagesDiv.prepend(html);
-
-//                }
-
+            messagesDiv.prepend(chatTemplate(data.avatar,dataN(data.name),data.date,data.message));
             $('#preloader').hide();
 
 
@@ -146,35 +149,34 @@ $(function () {
 
             nick_name(data);
 
+            // $('#whisper_button_first_view').on('click', function () {
+            //     $(this).hide('fast');
+            //     $('#whisperTo').show('slow');
+            // });
 
-            $('#whisper_button_first_view').on('click', function () {
-                $(this).hide('fast');
-                $('#whisperTo').show('slow');
-            });
-
-            $('#whisperTo').on({
-                mouseup: function (e) {
-                    e.preventDefault();
-                    //console.log('whisperName');
-                    $('#submit').hide('fast');
-                    whisper_button.show('slow');
-                    $('#whisperStop').show('slow');
-
-                    $(this).css({'background': '#464545', 'color': 'white'});
-                    $('.ui.form textarea, .ui.textarea').css({'background': '#464545', 'color': 'white'});
-
-                    //whisperToName = $(this).find($('.whisperName').text());
-                    whisperToName = $(this).val();
-
-                    //console.log('onUP: '+data+' whisperToName - '+whisperToName);
-
-                }, change: function (e) {
-                    e.preventDefault();
-                    whisperToName = $(this).val();
-                    //console.log('onCHANGE: '+data+' whisperToName - '+whisperToName);
-
-                }
-            });
+            // $('#whisperTo').on({
+            //     mouseup: function (e) {
+            //         e.preventDefault();
+            //         //console.log('whisperName');
+            //         $('#submit').hide('fast');
+            //         whisper_button.show('slow');
+            //         $('#whisperStop').show('slow');
+            //
+            //         $(this).css({'background': '#464545', 'color': 'white'});
+            //         $('.ui.form textarea, .ui.textarea').css({'background': '#464545', 'color': 'white'});
+            //
+            //         //whisperToName = $(this).find($('.whisperName').text());
+            //         whisperToName = $(this).val();
+            //
+            //         //console.log('onUP: '+data+' whisperToName - '+whisperToName);
+            //
+            //     }, change: function (e) {
+            //         e.preventDefault();
+            //         whisperToName = $(this).val();
+            //         //console.log('onCHANGE: '+data+' whisperToName - '+whisperToName);
+            //
+            //     }
+            // });
 
         });
              //end socke.onNickname
@@ -183,65 +185,65 @@ $(function () {
         // Stop Whispering    //
         //================//
 
-        $('#whisperStop').on('click', function (e) {
-            e.preventDefault();
-            console.log('whisperStop');
-            $(this).hide('fast');
-            $('#whisper_button').hide('fast');
-            $('#submit').show('slow');
+        // $('#whisperStop').on('click', function (e) {
+        //     e.preventDefault();
+        //     console.log('whisperStop');
+        //     $(this).hide('fast');
+        //     $('#whisper_button').hide('fast');
+        //     $('#submit').show('slow');
+        //
+        //     $('#whisperTo').hide('fast');
+        //     $('#whisper_button_first_view').show('slow');
+        //     //$('#whisperTo').css({'background': 'white', 'color': 'rgba(0, 0, 0, .8)'});
+        //
+        //     $('.ui.form textarea, .ui.textarea').css({'background': 'white', 'color': 'rgba(0, 0, 0, .8)'});
+        //
+        //     whisperStatus = false;
+        //     socket.emit('whisper',
+        //
+        //         {
+        //
+        //             whisperToName: whisperToName,
+        //             msg: textarea.val(),
+        //             //date: date,
+        //             whisperStatus: whisperStatus
+        //
+        //         });
+        //
+        // });
 
-            $('#whisperTo').hide('fast');
-            $('#whisper_button_first_view').show('slow');
-            //$('#whisperTo').css({'background': 'white', 'color': 'rgba(0, 0, 0, .8)'});
-
-            $('.ui.form textarea, .ui.textarea').css({'background': 'white', 'color': 'rgba(0, 0, 0, .8)'});
-
-            whisperStatus = false;
-            socket.emit('whisper',
-
-                {
-
-                    whisperToName: whisperToName,
-                    msg: textarea.val(),
-                    //date: date,
-                    whisperStatus: whisperStatus
-
-                });
-
-        });
-
-        $('#whisper_button').on('click', function (e) {
-            e.preventDefault();
-            console.log('whisper');
-            whisperStatus = true;
-            //socket.emit('whisper', whisperTo.val(), whisperMsg.val(), whisperStatus);
-            var whisperFromName = storage.get('name');
-
-
-            var d = new Date();
-            var n = d.toLocaleDateString();
-            var t = d.toLocaleTimeString();
-
-            var date = n + ' ' + t;
-
-            socket.emit('whisper',
-
-                {
-
-                    whisperToName: whisperToName,
-                    whisperFromName: whisperFromName,
-                    msg: textarea.val(),
-                    date: date,
-                    whisperStatus: whisperStatus,
-                    avatar: $avatar.html()
-
-
-                });
-
-            textarea.val('');
-
-
-        });
+        // $('#whisper_button').on('click', function (e) {
+        //     e.preventDefault();
+        //     console.log('whisper');
+        //     whisperStatus = true;
+        //     //socket.emit('whisper', whisperTo.val(), whisperMsg.val(), whisperStatus);
+        //     var whisperFromName = storage.get('name');
+        //
+        //
+        //     var d = new Date();
+        //     var n = d.toLocaleDateString();
+        //     var t = d.toLocaleTimeString();
+        //
+        //     var date = n + ' ' + t;
+        //
+        //     socket.emit('whisper',
+        //
+        //         {
+        //
+        //             whisperToName: whisperToName,
+        //             whisperFromName: whisperFromName,
+        //             msg: textarea.val(),
+        //             date: date,
+        //             whisperStatus: whisperStatus,
+        //             avatar: $avatar.html()
+        //
+        //
+        //         });
+        //
+        //     textarea.val('');
+        //
+        //
+        // });
 
 
         //=======================//
@@ -256,62 +258,40 @@ $(function () {
 
                 console.log(data.date + ' - ' + data.whisperToName);
 
-                html =
+                // html =
+                //     "<div class='comment animated bounceInDown'>" +
+                //     "<p class='avatar'>" +
+                //     dataAv(data.avatar) +
+                //     "</p>" +
+                //     "<div class='content'>" +
+                //     "<a class='author'>" + data.whisperFromName + "</a>" +
+                //     "<div class='metadata'>" +
+                //     "<span class='date'> " + data.date + "</span>" +
+                //     "</div>" +
+                //     "<br/>" +
+                //     "<p class='author' style='font-weight: 300'> <i class='spy icon'> </i> " + data.whisperToName + "</p>" +
+                //
+                //     "<div class='text' style='color: #a6373c'>" +
+                //         //"<i class='spy icon'> </i> "
+                //     "<i class='comment icon'></i>  "
+                //
+                //     + data.msg +
+                //
+                // "</div>" +
+                // "<div class='actions'>" +
+                // "</div>" +
+                // "</div>" +
+                // "</div>";
 
-
-                    "<div class='comment animated bounceInDown'>" +
-                    "<p class='avatar'>" +
-                    dataAv(data.avatar) +
-                    "</p>" +
-                    "<div class='content'>" +
-                    "<a class='author'>" + data.whisperFromName + "</a>" +
-                    "<div class='metadata'>" +
-                    "<span class='date'> " + data.date + "</span>" +
-                    "</div>" +
-                    "<br/>" +
-                    "<p class='author' style='font-weight: 300'> <i class='spy icon'> </i> " + data.whisperToName + "</p>" +
-
-                    "<div class='text' style='color: #a6373c'>" +
-                        //"<i class='spy icon'> </i> "
-                    "<i class='comment icon'></i>  "
-
-                    + data.msg +
-
-                "</div>" +
-                "<div class='actions'>" +
-                "</div>" +
-                "</div>" +
-                "</div>";
-
-                messagesDiv.prepend(html);
+                // messagesDiv.prepend(html);
 
             }
 
             if (!data.whisperStatus) {
 
-                html =
-                    "<div class='comment animated bounceInDown'>" +
-                    "<p class='avatar'>" +
-                    dataAv(data.avatar) +
-                    " </p>" +
-                    "<div class='content'>" +
-                    "<a class='author'>" + dataN(data.name) + "</a>" +
-                    "<div class='metadata'>" +
-                    "<span class='date'> " + data.date + "</span>" +
-                    "</div>" +
-                    "<div class='text'><i class='comment icon'></i>  "
-
-                + dataM(data.message) +
-
-                "</div>" +
-                "<div class='actions'>" +
-                "</div>" +
-                "</div>" +
-                "</div>";
-                messagesDiv.prepend(html);
+                messagesDiv.prepend(chatTemplate(data.avatar,dataN(data.name),data.date,data.message));
 
                 $('#preloader').hide();
-
             }
         });
 
@@ -358,29 +338,24 @@ $(function () {
             whisper = '';
 
             for (var i = 0; i < data.length; i++) {
-
                 htmlNickname += "<li class='whoisonline'><i class='user icon' ></i> " + data[i] + "</li>";
                 whisper += "<option value='" + data[i] + "'><i class='user icon' ></i>" + data[i] + "</option>";
-
             }
-
 
             $(".username").html(htmlNickname);
             $(".whisper").html(whisper);
 
             htmlNickname = "";
             whisper = "";
-
-
         }
 
         function storageData(storage_data) {
             if (storage_data === true) {
                 storageCheck = true;
-                $('li.user').hide();
+                $('.user_name_field').hide();
                 $('#empty-storage').show();
             } else {
-                $('li.user').show();
+                $('.user_name_field').show();
                 $('#empty-storage').hide();
             }
         }
@@ -391,32 +366,21 @@ $(function () {
         //=====================//
         $('#submit').click(function (e) {
             e.preventDefault();
-
             var name = $('.chat');
-
 
             //====== storageCheck======//
             if (storageCheck === true) {
-
                 name = storage.get('name');
-
-
             } else {
                 name = name.val();
-
                 name = storage.set('name', name);
-
                 $('#empty-storage').show();
-
             }
-            console.log('name: ' + name + ' avatar: ' + $avatar + ' storageCheck: ' + storageCheck);
-
-
+            // console.log('name: ' + name + ' avatar: ' + $avatar + ' storageCheck: ' + storageCheck);
             socket.emit('nickname', name);
 
             //======Listen for status========//
             socket.on('status', function (data) {
-
                 if (typeof data !== 'object') {
                     //data will be a string in case of error status
                     statusbox.show().removeClass("alert-success");
@@ -424,24 +388,19 @@ $(function () {
                     setStatus(data);
                 }
                 if (data.clear === true) {
-
-                    $('li.user').hide('slow');
-
+                    $('.user_name_field').hide('slow');
                     textarea.val('');//clear textarea
                 }
-
             });
             //
 
             var d = new Date();
             var n = d.toLocaleDateString();
             var t = d.toLocaleTimeString();
-
             var date = n + ' ' + t;
 
             socket.emit('userinput',
                 {
-
                     name: name,
                     message: textarea.val(),
                     date: date,
@@ -451,7 +410,6 @@ $(function () {
 
             //=== clear input===//
             $('#m').val('');
-
 
         });//end form
 
@@ -464,10 +422,9 @@ $(function () {
             //storage.remove('name');
             storage.removeAll(true);
             storageCheck = false;
-            $('li.user').show('slow');
+            $('.user_name_field').show('slow');
             $(this).hide();
         });
-
 
 
     } //end socket
