@@ -27,13 +27,12 @@ NodeJs Mongodb Socket.io Realtime chat
      
 _Open your favourite browser at localhost:3000_   
  
- 
- 
-Desktop  
+---  
+#### Desktop  
  
  <img src="video/node_chat_desktop.gif" alt="node_chat_desktop.gif"/>  
  
-Web App 
+#### Web App 
  
  <img src="video/node_chat_iphone.gif" alt="node_chat_iphone.gif"/>
 
