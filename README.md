@@ -4,7 +4,7 @@ NodeJs Mongodb Socket.io Realtime chat
 
 ### Demo <a href="http://simonsays-simgoat.rhcloud.com/"><em><u>HERE</u></em></a>   
  
-# Setup 
+### Setup 
  Install <a href="https://nodejs.org/en/" alt="nodejs">Node js</a>  
   Read <a href="https://nodejs.org/en/docs/ ">docs</a>  
  
