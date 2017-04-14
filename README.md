@@ -1,9 +1,10 @@
 #Realtime Chat with Node.js
---------------------------
-
+---
 NodeJs Mongodb Socket.io Realtime chat  
 
-#Setup 
+### Demo <a href="http://simonsays-simgoat.rhcloud.com/"><em><u>HERE</u></em></a>   
+ 
+# Setup 
  Install <a href="https://nodejs.org/en/" alt="nodejs">Node js</a>  
   Read <a href="https://nodejs.org/en/docs/ ">docs</a>  
  
@@ -11,12 +12,12 @@ NodeJs Mongodb Socket.io Realtime chat
  Install mongodb <a href="https://www.mongodb.org/">mongodb</a>  
  Read <a href="http://docs.mongodb.org/manual/installation/">docs</a>  
  
-  Start mongod:
+ #### Start mongod:
  
     $ mongod    
        
     
- Start app:  
+ #### Start app:  
 
      $ cd [path to]/responsive_nodejs_chat/
      
@@ -24,13 +25,10 @@ NodeJs Mongodb Socket.io Realtime chat
        
      $ node server.js  
      
-_Open your favourite browser at localhost:3000_ 
+_Open your favourite browser at localhost:3000_   
  
-  
-#Demo  - online  
-   
-Goto Room_Example Demo <a href="http://simonsays-simgoat.rhcloud.com/"><em><u>HERE</u></em></a>   
-
+ 
+ 
 Desktop  
  
  <img src="video/node_chat_desktop.gif" alt="node_chat_desktop.gif"/>  
