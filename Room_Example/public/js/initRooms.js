@@ -4,7 +4,7 @@ $(function () {
     
     try {
         ///LOCALHOST
-        var socket = io.connect('http://localhost:3000/');  //// mit locales socket verbinden
+        var socket = io.connect('https://live.oguradio.com/chat/');  //// mit locales socket verbinden
 
     } catch (e) {
         console.log('Could not connect to socket.');
