@@ -15,7 +15,7 @@ var users = {},
 
 
 //// LOCAL IP/PORT!
-const ipaddress = "127.0.0.1";
+const ipaddress = "0.0.0.0";
 const port = 3000;
 
 //// LOCAL MONGODB_DB_URL ////
