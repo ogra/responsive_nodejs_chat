@@ -118,7 +118,7 @@ $(function () {
 
             recognizeUser.addClass('ui red label animated bounceInLeft').html(
                 " <div class='header'>" +
-                "Please choose a username first!" +
+                "ユーザー名を先に決めてください!" +
                 "</div><p><small></small></p>");
 
             setTimeout(function () {
