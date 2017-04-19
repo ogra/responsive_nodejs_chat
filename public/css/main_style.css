@@ -390,7 +390,7 @@ textarea[placeholder] {
     #footer_form_wrapper {
         width: 50%;
         margin: 0 auto;
-        margin-bottom: -1%;
+        /*margin-bottom: -1%;*/
     }
 
     #preloader {
