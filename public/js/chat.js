@@ -100,7 +100,7 @@ $(function () {
 
             recognizeUser.addClass('ui purple label animated bounceInLeft').html(
                 " <div class='header'>" +
-                "Welcome back!<br><br/>" +
+                "おかえりなさい!<br><br/>" +
                 "<i class='user icon'></i><em>" + storage.get('name') + "</em>" +
                 "</div>" +
                 "<p><small></small></p>");
