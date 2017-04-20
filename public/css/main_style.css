@@ -347,11 +347,11 @@ textarea[placeholder] {
 /*width : 100%;*/
 /*}*/
 
-.live {
+.ng-scope.live {
     font-weight: bold;
 }
 
-.offline {
+.ng-scope.offline {
     font-weight: normal;
 }
 
@@ -406,7 +406,7 @@ textarea[placeholder] {
 
     }
 
-    .live {
+    .ng-scope.live {
         width: 84px;
         height: 36px;
         background: url("../img/live_banner.png") 0 0 no-repeat;
@@ -415,7 +415,7 @@ textarea[placeholder] {
         overflow: hidden;
     }
 
-    .offline {
+    .ng-scope.offline {
         width: 84px;
         height: 36px;
         background: url("../img/offline_banner.png") 0 0 no-repeat;
