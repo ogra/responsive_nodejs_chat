@@ -407,6 +407,7 @@ textarea[placeholder] {
     }
 
     .ng-scope.live {
+        display: inline-block;
         width: 84px;
         height: 36px;
         background: url("../img/live_banner.png") 0 0 no-repeat;
@@ -416,6 +417,7 @@ textarea[placeholder] {
     }
 
     .ng-scope.offline {
+        display: inline-block;
         width: 84px;
         height: 36px;
         background: url("../img/offline_banner.png") 0 0 no-repeat;
