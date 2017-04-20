@@ -398,11 +398,11 @@ textarea[placeholder] {
 
     }
 
-    .liveState {
+    .live {
         font-weight: bold;
     }
 
-    .offlineState {
+    .offline {
         font-weight: normal;
     }
 
