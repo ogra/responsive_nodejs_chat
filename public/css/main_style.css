@@ -399,11 +399,11 @@ textarea[placeholder] {
     }
 
     .liveState {
-        background-color: red;
+        font-weight: bold;
     }
 
     .offlineState {
-        background-color: transparent;
+        font-weight: normal;
     }
 
     /*.whisper {*/
