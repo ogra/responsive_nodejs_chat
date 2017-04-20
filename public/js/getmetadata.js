@@ -5,15 +5,21 @@ angular
 
 function MainController($scope, $interval, Icecast) {
   $scope.state = '休止中';
+  $scope.offlineState = true;
+  $scope.liveState = false;
   var t = $interval(function() {
     Icecast.getResource().then(function(data) {
       if (data.icestats !== undefined && data.icestats.source !== undefined) {
         if ($scope.state === '休止中') {
           $scope.state = '放送中!';
+          $scope.offlineState = false;
+          $scope.liveState = true;
         } 
       } else {
         if ($scope.state === '放送中!') {
           $scope.state = '休止中';
+          $scope.offlineState = true;
+          $scope.liveState = false;
         }
       }
     });

@@ -398,6 +398,14 @@ textarea[placeholder] {
 
     }
 
+    .liveState {
+        background-color: red;
+    }
+
+    .offlineState {
+        background-color: transparent;
+    }
+
     /*.whisper {*/
     /*margin-left : 5%;*/
     /*margin-top  : 2%;*/
