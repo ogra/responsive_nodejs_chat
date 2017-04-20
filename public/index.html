@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,6 +67,7 @@
             </div>
 
             <div>
+                <span ng-controller="MainController"><span ng-bind="state"></span></span>
                 <audio controls>
                     <source src="//live.oguradio.com/live">
                     Your browser does not support the audio element.
@@ -168,6 +169,10 @@
 
 <script src="js/jquery.storageapi.min.js"></script>
 <script src="js/chat.js"></script>
+
+<script src="public/bower_components/angular/angular.min.js"></script>
+
+<script src="js/getmetadata.js"></script>
 
 <script>
 

@@ -7,6 +7,8 @@ node_modules/
 
 Room_Example/node_modules
 
+public/bower_components/
+
 ## Directory-based project format:
 .idea/
 

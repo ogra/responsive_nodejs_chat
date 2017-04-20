@@ -1,0 +1,28 @@
+{
+  "name": "simple-nodejs-chat",
+  "description": "nodejs chat app",
+  "main": "server.js",
+  "authors": [
+    "[object Object]"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "chat",
+    "Node.js",
+    "application",
+    "npm"
+  ],
+  "homepage": "https://github.com/ogra/responsive_nodejs_chat",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.4"
+  }
+}
