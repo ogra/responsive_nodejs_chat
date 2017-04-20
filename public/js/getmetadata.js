@@ -27,7 +27,7 @@ function Icecast($http, $q) {
     var d = $q.defer();
     return $http({
         method: 'GET',
-        url: 'http://live.oguradio.com:8000/status-json.xsl',
+        url: 'https://live.oguradio.com/status-json.xsl',
         headers: {
           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
           'Origin': undefined
