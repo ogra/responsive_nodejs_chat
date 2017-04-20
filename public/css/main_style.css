@@ -347,6 +347,14 @@ textarea[placeholder] {
 /*width : 100%;*/
 /*}*/
 
+.live {
+    font-weight: bold;
+}
+
+.offline {
+    font-weight: normal;
+}
+
 @media only screen and ( min-width: 710px ) {
 
     /*.recognize-user {*/
@@ -399,11 +407,21 @@ textarea[placeholder] {
     }
 
     .live {
-        font-weight: bold;
+        width: 84px;
+        height: 36px;
+        background: url("../img/live_banner.png") 0 0 no-repeat;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .offline {
-        font-weight: normal;
+        width: 84px;
+        height: 36px;
+        background: url("../img/offline_banner.png") 0 0 no-repeat;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     /*.whisper {*/
