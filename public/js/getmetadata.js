@@ -7,6 +7,7 @@ function MainController($scope, $interval, Icecast) {
   $scope.state = '休止中';
   $scope.offlineState = true;
   $scope.liveState = false;
+  $scope.listenerCount = 0;
   var t = $interval(function() {
     Icecast.getResource().then(function(data) {
       if (data.icestats !== undefined && data.icestats.source !== undefined) {
@@ -14,12 +15,14 @@ function MainController($scope, $interval, Icecast) {
           $scope.state = '放送中!';
           $scope.offlineState = false;
           $scope.liveState = true;
+          $scope.listenerCount = data.icestats.source.listeners;
         } 
       } else {
         if ($scope.state === '放送中!') {
           $scope.state = '休止中';
           $scope.offlineState = true;
           $scope.liveState = false;
+          $scope.listenerCount = 0;
         }
       }
     });
