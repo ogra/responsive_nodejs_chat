@@ -69,10 +69,12 @@
             <div>
                 <span ng-controller="MainController">
                     <span ng-bind="state" ng-class="{live: liveState, offline: offlineState}"></span>
+                    <!--
                     &nbsp;
                     <span ng-show="listenerCount > 0" ng-class="{noListeners: listenerCount === 0}">
                         <span ng-bind="listenerCount"></span>人のリスナー
                     </span>
+                    -->
                 </span>
                 <audio controls>
                     <source src="//live.oguradio.com/live">

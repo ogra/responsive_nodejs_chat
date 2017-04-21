@@ -354,11 +354,11 @@ textarea[placeholder] {
 .ng-binding.offline {
     font-weight: normal;
 }
-
+/*
 .noListeners {
     display: none;
 }
-
+*/
 @media only screen and ( min-width: 710px ) {
 
     /*.recognize-user {*/
@@ -430,9 +430,11 @@ textarea[placeholder] {
         overflow: hidden;
     }
     
+/*    
     .noListeners {
         display: none;
     }
+*/    
 
     /*.whisper {*/
     /*margin-left : 5%;*/
