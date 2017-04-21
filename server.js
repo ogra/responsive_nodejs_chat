@@ -22,7 +22,7 @@ monitor.createFeed(function(err, feed) {
     // Handle usual events 
     feed.on('mount.listeners', function(listeners, raw) {
         console.log(listeners, raw);
-        listenerCount = listeners;
+        listenerCount = raw;
     });
 });
 
