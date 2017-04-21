@@ -6,7 +6,7 @@ var mongoChat = require('./app/mongo_chat');
 var Monitor = require('icecast-monitor');
 var monitor = new Monitor({
     host: 'localhost',
-    port: 80000,
+    port: 8000,
     user: 'admin',
     password: 'hackme'
 });
