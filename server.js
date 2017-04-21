@@ -3,28 +3,6 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoChat = require('./app/mongo_chat');
-var Monitor = require('icecast-monitor');
-var monitor = new Monitor({
-    host: 'localhost',
-    port: 8000,
-    user: 'admin',
-    password: 'hackme'
-});
-var listenerCount = 0;
-monitor.createFeed(function(err, feed) {
-    if (err) throw err;
-
-    // Handle wildcard events 
-    feed.on('*', function(event, data, raw) {
-        console.log(event, data, raw);
-    });
-
-    // Handle usual events 
-    feed.on('mount.listeners', function(listeners, raw) {
-        console.log(listeners, raw);
-        listenerCount = raw;
-    });
-});
 
 var ip = "0.0.0.0";
 var port = 3000;
@@ -34,9 +12,6 @@ var storage=[];
 app.use(express.static(__dirname + '/public'));
 app.get('/', function (req, res) {
     res.sendfile('index.html');
-});
-app.get('/stats', function (req, res) {
-    res.json({listeners: listenerCount});
 });
 //socket connection
     io.on('connection', function (socket) {

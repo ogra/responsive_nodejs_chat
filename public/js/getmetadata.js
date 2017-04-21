@@ -26,10 +26,6 @@ function MainController($scope, $interval, Icecast) {
         }
       }
     });
-
-    Icecast.getListenersCount().then(function(countObj) {
-      $scope.listenersCount = countObj.listeners;
-    });
   }, 1000);
 }
 
@@ -41,25 +37,6 @@ function Icecast($http, $q) {
     return $http({
         method: 'GET',
         url: 'https://live.oguradio.com/status-json.xsl',
-        headers: {
-          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-          'Origin': undefined
-        }
-      })
-      .then(function(response) {
-        d.resolve(response.data);
-        return d.promise;
-      }, function(response) {
-        d.resolve(response);
-        return d.promise;
-      });
-  };
-
-  self.getListenersCount = function(){
-    var d = $q.defer();
-    return $http({
-        method: 'GET',
-        url: 'https://live.oguradio.com/stats',
         headers: {
           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
           'Origin': undefined
