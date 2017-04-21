@@ -347,11 +347,11 @@ textarea[placeholder] {
 /*width : 100%;*/
 /*}*/
 
-.ng-scope.live {
+.ng-binding.live {
     font-weight: bold;
 }
 
-.ng-scope.offline {
+.ng-binding.offline {
     font-weight: normal;
 }
 
@@ -406,7 +406,7 @@ textarea[placeholder] {
 
     }
 
-    .ng-scope.live {
+    .ng-binding.live {
         display: inline-block;
         width: 84px;
         height: 36px;
@@ -416,7 +416,7 @@ textarea[placeholder] {
         overflow: hidden;
     }
 
-    .ng-scope.offline {
+    .ng-binding.offline {
         display: inline-block;
         width: 84px;
         height: 36px;
